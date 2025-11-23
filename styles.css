@@ -1,0 +1,47 @@
+.folder-new-note-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 6px;
+  padding: 1px 5px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nav-folder-title:hover .folder-new-note-button,
+.nav-folder-title:focus-within .folder-new-note-button {
+  display: inline-flex;
+}
+
+.folder-new-note-button:hover,
+.folder-new-note-button:focus-visible {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.folder-new-note-button:focus-visible {
+  outline: 1px solid var(--interactive-accent);
+  outline-offset: 1px;
+}
+
+/* Mobile adjustments */
+body.is-mobile .folder-new-note-button {
+  margin-right: 40px;
+  /* Avoid overlap with drag handle */
+  opacity: 1;
+  /* Ensure it's visible on mobile where hover doesn't exist */
+  display: inline-flex;
+  /* Always show on mobile if desired, or rely on focus */
+}
+
+/* Ensure it shows on mobile when row is active/focused if not always shown */
+body.is-mobile .nav-folder-title .folder-new-note-button {
+  display: inline-flex;
+}
