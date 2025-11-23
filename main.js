@@ -135,43 +135,27 @@ class FolderNewNoteButtonPlugin extends Plugin {
   }
 
   selectInlineTitle(leaf) {
-    // Wait a bit for the editor and DOM to fully initialize
     window.setTimeout(() => {
       const view = leaf.view;
       if (!view) {
         return;
       }
 
-      // Try to find the inline title first (default behavior)
       const inlineTitleEl = view.containerEl?.querySelector('.inline-title');
 
       if (inlineTitleEl && inlineTitleEl.offsetParent !== null) {
-        // Found and visible
         inlineTitleEl.focus();
         this.selectElementText(inlineTitleEl);
       } else {
-        // Fallback: Try to find the view header title (when inline title is disabled)
         const headerTitleEl = view.containerEl?.querySelector('.view-header-title');
         if (headerTitleEl) {
           headerTitleEl.focus();
-          // The header title might be a contenteditable div or contain an input
-          // Usually clicking it triggers the edit mode, but focusing it might be enough
-          // or we might need to trigger a click.
-          // Let's try focusing and selecting first.
 
-          // In some versions, the header title is a container for the text.
-          // We might need to find the actual text node or input.
-          // However, native behavior usually requires clicking the title to edit it 
-          // if it's not already in edit mode.
-          // Let's try to simulate a click if it's not an input.
           if (headerTitleEl.tagName !== 'INPUT' && headerTitleEl.tagName !== 'TEXTAREA') {
             headerTitleEl.click();
           }
 
-          // After click/focus, try to select content
-          // We might need a small delay if the click transforms it into an input
           window.setTimeout(() => {
-            // Re-query in case the DOM changed (e.g. became an input)
             const activeEl = document.activeElement;
             if (activeEl && view.containerEl.contains(activeEl)) {
               this.selectElementText(activeEl);
