@@ -32,16 +32,21 @@
 }
 
 /* Mobile adjustments */
-body.is-mobile .folder-new-note-button {
-  margin-right: 40px;
-  /* Avoid overlap with drag handle */
-  opacity: 1;
-  /* Ensure it's visible on mobile where hover doesn't exist */
-  display: inline-flex;
-  /* Always show on mobile if desired, or rely on focus */
+body.is-mobile .nav-folder-title {
+  position: relative;
 }
 
-/* Ensure it shows on mobile when row is active/focused if not always shown */
-body.is-mobile .nav-folder-title .folder-new-note-button {
+/* Push the count left to make room for the button */
+body.is-mobile .nav-folder-title[data-count]::after {
+  margin-right: 18px;
+}
+
+body.is-mobile .folder-new-note-button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  opacity: 1;
   display: inline-flex;
 }
