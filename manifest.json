@@ -3,7 +3,7 @@
   "name": "Folder New Note Button",
   "version": "1.0.0",
   "minAppVersion": "1.5.0",
-  "description": "Adds a subtle + button to every folder in Obsidian's Files view to create a new note directly inside that folder.",
+  "description": "Create new notes from a hover button on each folder in the Files view.",
   "author": "Christopher Jones",
   "isDesktopOnly": false
 }
